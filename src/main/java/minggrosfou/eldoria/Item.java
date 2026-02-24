@@ -17,7 +17,7 @@ public class Item {
     double weight = 1;
     double volume = 1;
 
-    public static enum Type {
+    public enum Type {
         AMMO,
         ARM,
         BACK,

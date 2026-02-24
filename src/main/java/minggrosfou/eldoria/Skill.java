@@ -7,7 +7,7 @@ public class Skill {
     double CD_tick;
     int MP_cost;
 
-    public static enum Type {
+    public enum Type {
         ACTIVE,
         PASSIVE,
         TOGGLE_PASSIVE

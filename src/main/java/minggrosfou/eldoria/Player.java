@@ -1,19 +1,22 @@
 package minggrosfou.eldoria;
 
+import minggrosfou.eldoria.cities.Willowshade;
+import minggrosfou.eldoria.kingdoms.Eldoria;
+
 import java.util.ArrayList;
 import java.util.Map;
 
 public class Player {
-    String name = "Ming";
+    String name;
     String origin_city = "Willowshade";
-    String origin_kingdom = "Eldoria";
-    String backstory = "Reincarnated in Eldoria.";
+    World.Kingdom origin_kingdom = World.Kingdom.ELDORIA;
+    String backstory = "Reincarnated in Willowshade, Eldoria.";
     ArrayList<String> personality;
 
     Race race;
     Combat_Class combat_class = Combat_Class.NONE;
     String specialization;
-    String job;
+    Job job = Job.ADVENTURER;
 
     int level = 1;
     public static int max_level = 100;
@@ -55,10 +58,10 @@ public class Player {
 
     Map<Player, Relationship> relationships;
 
-    double world_x = 2500d;
-    double world_y = 2500d;
+    double world_x_cm;
+    double world_y_cm;
 
-    public static enum Race {
+    public enum Race {
         BEASTKIN,
         DEMON,
         DWARF,
@@ -72,7 +75,7 @@ public class Player {
         ORC
     }
 
-    public static enum Combat_Class {
+    public enum Combat_Class {
         ARCHER,
         ASSASSIN,
         BATTLEMAGE,
@@ -88,7 +91,7 @@ public class Player {
         SWORDSMAN
     }
 
-    public static enum Job {
+    public enum Job {
         ACTOR,
         ADVENTURER,
         ALCHEMIST,
@@ -168,6 +171,8 @@ public class Player {
     public Player(String name, Race race) {
         this.name = name;
         this.race = race;
+        this.world_x_cm = Willowshade.world_coord_km[0] * 100000;
+        this.world_y_cm = Willowshade.world_coord_km[1] * 100000;
     }
 
     public int exp_required() {
