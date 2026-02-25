@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Eldoria</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.180.0/three.module.min.js"
+          }
+        }
+    </script>
+</head>
+<body>
+<input id="chat-box" />
+<button id="chat-box-button">Send</button>
+<script type="module" src="socket.js"></script>
+</body>
+</html>

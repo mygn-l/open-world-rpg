@@ -618,10 +618,10 @@ public class World {
         this.sample_km_from_10km();
         System.out.println("Sampled km from 10km");
 
-        Custom_Math.add_perlin(heightmap_km, 1000, 0, 0, 5000, 5000, 1000, (long) (Math.random() * 50));
+        Custom_Math.add_perlin(heightmap_km, 1000, 0, 0, 5000, 5000, 0, 0, 1000);
         System.out.println("Perlin 1000km done");
 
-        Custom_Math.add_perlin(heightmap_km, 500, 0, 0, 5000, 5000, 500, (long) (Math.random() * 50));
+        Custom_Math.add_perlin(heightmap_km, 500, 0, 0, 5000, 5000, 0, 0, 500);
         System.out.println("Perlin 500km done");
 
         this.spawn_lakes();
@@ -631,7 +631,7 @@ public class World {
         System.out.println("Volcanoes done");
         System.out.println("United Human-Demon Realm spawned");
 
-        Custom_Math.add_perlin(heightmap_km, 100, 0, 0, 5000, 5000, 100, (long) (Math.random() * 50));
+        Custom_Math.add_perlin(heightmap_km, 100, 0, 0, 5000, 5000, 0, 0, 100);
         System.out.println("Perlin 100km done");
 
         this.assign_aquatic_zone();

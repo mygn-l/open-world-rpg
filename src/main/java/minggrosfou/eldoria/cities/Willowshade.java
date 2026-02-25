@@ -11,7 +11,7 @@ public class Willowshade {
     public static int[] plaza_coord = new int[]{1500, 1500};
 
     public Willowshade(World world, Eldoria eldoria) {
-        world_coord_km = new int[]{eldoria.luminara.coord[0] - 200, eldoria.luminara.coord[1] + 100};
+        world_coord_km = new int[]{eldoria.luminara.coord[0] - 100, eldoria.luminara.coord[1] - 100};
         /*
         while (
                 world.kingdom_belongings_km[world_coord_km[0]][world_coord_km[1]] != World.Kingdom.ELDORIA ||

@@ -2,6 +2,7 @@ package minggrosfou.eldoria;
 
 import minggrosfou.eldoria.cities.Willowshade;
 import minggrosfou.eldoria.kingdoms.Eldoria;
+import org.springframework.cglib.core.Local;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -60,6 +61,8 @@ public class Player {
 
     double world_x_cm;
     double world_y_cm;
+    double world_z_m = 0;
+    double velocity_z_mt = 0;
 
     public enum Race {
         BEASTKIN,
@@ -171,8 +174,24 @@ public class Player {
     public Player(String name, Race race) {
         this.name = name;
         this.race = race;
+
         this.world_x_cm = Willowshade.world_coord_km[0] * 100000;
         this.world_y_cm = Willowshade.world_coord_km[1] * 100000;
+    }
+
+    public void fall(Local_World local_world) {
+        int[] center_cm = new int[]{(int) this.world_x_cm, (int) this.world_y_cm};
+        int[] bottom_left_cm = Local_World.nearsight_bottom_left_m(center_cm);
+        int[] diff_m = new int[]{(center_cm[0] - bottom_left_cm[0]) / 100, (center_cm[1] - bottom_left_cm[1] / 100)};
+        double elevation = local_world.nearsight_heightmap_m[diff_m[0]][diff_m[1]];
+
+        if (this.world_z_m < elevation - 0.05) {
+            this.world_z_m = elevation - 0.02;
+            this.velocity_z_mt = 0;
+        } else if (this.world_z_m > elevation + 0.05) {
+            this.velocity_z_mt -= 9.8 * 0.1;
+            this.world_z_m += this.velocity_z_mt * 0.1;
+        }
     }
 
     public int exp_required() {

@@ -1,4 +1,4 @@
-package minggrosfou.eldoria.controller;
+package minggrosfou.eldoria.restcontroller;
 
 import minggrosfou.eldoria.World;
 
