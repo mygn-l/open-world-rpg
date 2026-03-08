@@ -8,7 +8,8 @@
     <script type="importmap">
         {
           "imports": {
-            "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.180.0/three.module.min.js"
+            "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.180.0/three.module.min.js",
+            "rapier": "https://cdn.skypack.dev/@dimforge/rapier3d-compat"
           }
         }
     </script>
@@ -16,6 +17,11 @@
 <body>
 <input id="chat-box" />
 <button id="chat-box-button">Send</button>
-<script type="module" src="socket.js"></script>
+<script type="module" src="Config.js"></script>
+<script type="module" src="Rest.js"></script>
+<script type="module" src="Socket.js"></script>
+<script type="module" src="Renderer.js"></script>
+<script type="module" src="Physics.js"></script>
+<script type="module" src="Game.js"></script>
 </body>
 </html>

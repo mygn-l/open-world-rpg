@@ -1,32 +1,32 @@
 package minggrosfou.eldoria.restcontroller;
 
-import minggrosfou.eldoria.Local_World;
-import minggrosfou.eldoria.Player;
-import minggrosfou.eldoria.World;
+import minggrosfou.eldoria.world.Local_World;
+import minggrosfou.eldoria.entity.Entity;
+import minggrosfou.eldoria.world.Earth;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/")
 class Rest_Handler {
-    World world = new World();
-    Player player = world.players.getFirst();
-    Local_World local_world = new Local_World(world, player);
+    Earth earth = new Earth();
+    Entity entity = earth.entities.getFirst();
+    Local_World local_world = new Local_World(earth, entity);
 
     @RequestMapping(value = "/get-map", method = RequestMethod.GET)
     public World_Map get_map() {
-        return new World_Map(world, 10);
+        return new World_Map(earth, 10);
     }
 
     @RequestMapping(value = "/get-farsight-map", method = RequestMethod.GET)
-    public int[][] get_farsight_map() {
-        local_world.generate_if_needed(player);
-        return local_world.farsight_heightmap_10m;
+    public Farsight_Map get_farsight_map() {
+        int[] farsight_bottom_left = Local_World.farsight_bottom_left_m(entity.world_cm_whole());
+        return new Farsight_Map(local_world.farsight_heightmap_10m, farsight_bottom_left);
     }
 
     @RequestMapping(value = "/get-nearsight-map", method = RequestMethod.GET)
-    public double[][] get_nearsight_map() {
-        local_world.generate_if_needed(player);
-        return local_world.nearsight_heightmap_m;
+    public Nearsight_Map get_nearsight_map() {
+        int[] nearsight_bottom_left = Local_World.nearsight_bottom_left_m(entity.world_cm_whole());
+        return new Nearsight_Map(local_world.nearsight_heightmap_m, nearsight_bottom_left, entity.world_cm_y_up());
     }
 }
